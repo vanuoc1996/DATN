@@ -18,7 +18,7 @@ public class Product {
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "product_name", nullable = false)
     private String productName;
@@ -45,22 +45,22 @@ public class Product {
     private String unit;
 
     @Column(name = "view")
-    private long view;
+    private Long view;
 
     @Column(name = "revenue")
-    private long revenue;
+    private Long revenue;
 
     @Column(name = "returned")
-    private long returned;
+    private Long returned;
 
     @Column(name = "status")
     private int status;
 
     @Column(name = "seller_id")
-    private long sellerId;
+    private Long sellerId;
 
     @Column(name = "category_id")
-    private long categoryId;
+    private Long categoryId;
 
     @Column(name = "creat_at")
     private Date creatAt = new Date();

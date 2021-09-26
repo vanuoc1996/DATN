@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.util.Date;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class ProductService implements IProductService {
 
     @Override
     public Product getProductById(long id) {
-        if (productRepository.findById(id).isPresent()){
+        if (productRepository.findById(id).isPresent()) {
             return productRepository.findById(id).get();
         } else {
             return null;
@@ -63,7 +64,11 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public void creatProduct1(String productName, MultipartFile bannerImg, MultipartFile coverImg, long price, long sale, String description, int availability, String unit, long view, long revenue, int status, long sellerId, long categoryId, Date creatAt, Date updateAt) {
-
+    public void creatProduct1(String productName, MultipartFile bannerImg, MultipartFile coverImg, long price,
+                              long sale, String description, int availability, String unit, long view, long revenue,
+                              int status, long sellerId, long categoryId, Date creatAt, Date updateAt) {
+        Product product = validate.toProduct(productName, bannerImg, coverImg, price, sale, description, availability, unit,
+                view, revenue, status, sellerId, categoryId, creatAt, updateAt);
+        creatProduct(product);
     }
 }
